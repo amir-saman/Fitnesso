@@ -1,17 +1,53 @@
 import 'dart:ui';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:fitnesso/Queries/GetPersonalInfo.dart';
 import 'package:fitnesso/homeWidgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase/firebase_io.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  final _auth = FirebaseAuth.instance;
+  late User loggedInUser;
+
+  CollectionReference personal_info =
+      FirebaseFirestore.instance.collection('personal_info');
+
+  @override
+  void initState() {
+    super.initState();
+
+    getCurrentUser();
+  }
+
+  void getCurrentUser() async {
+    try {
+      final user = await _auth.currentUser;
+      if (user != null) {
+        loggedInUser = user;
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    final uid = _auth.currentUser?.uid;
+
     return Scaffold(
       appBar: AppBar(
         title: Text("Fitnesso"),
         actions: <Widget>[
           IconButton(
+            tooltip: "Info",
             icon: const Icon(
               Icons.info,
               color: Colors.white,
@@ -19,7 +55,18 @@ class HomePage extends StatelessWidget {
             onPressed: () {
               //TODO
             },
-          )
+          ),
+          IconButton(
+            icon: const Icon(
+              Icons.logout,
+              color: Colors.white,
+            ),
+            tooltip: "Logout",
+            onPressed: () {
+              _auth.signOut();
+              Navigator.pop(context);
+            },
+          ),
         ],
       ),
       body: SafeArea(
@@ -33,45 +80,49 @@ class HomePage extends StatelessWidget {
               fit: BoxFit.cover,
             ),
           ),
-          child: Column(
-            children: [
-              const Text("Welcome Back", style: TextStyle(fontSize: 40)),
-              const Text(
-                "USER",
-                style: TextStyle(
-                    fontSize: 60, fontFamily: 'Yellowtail', letterSpacing: 3),
-              ),
-              const Divider(
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                const Text(
+                  "Welcome Back",
+                  style: TextStyle(
+                    fontSize: 40,
+                  ),
+                ),
+                GetName(uid!),
+                const Divider(
                   height: 49,
                   thickness: 8,
                   indent: 50,
                   endIndent: 50,
-                  color: Colors.black),
-              const CircleAvatar(
-                radius: 75,
-                backgroundImage: AssetImage(
-                    'assets/images/homepage/default_profile_picture.png'),
-              ),
-              Column(
-                children: <Widget>[
-                  const SizedBox(height: 30),
-                  Wrap(
-                    // ROW 1
-                    spacing: 20,
-                    children: <Widget>[
-                      statBoxes("Weight", 70.2),
-                      statBoxes("Height", 183.4),
-                    ],
-                  ),
-                  const SizedBox(height: 15),
-                  Wrap(
-                    children: [
-                      statBoxes("BMI", 25.0),
-                    ],
-                  )
-                ],
-              ),
-            ],
+                  color: Color(0x75757575),
+                ),
+                const CircleAvatar(
+                  radius: 75,
+                  backgroundImage: AssetImage(
+                      'assets/images/homepage/default_profile_picture.png'),
+                ),
+                Column(
+                  children: [
+                    const SizedBox(height: 30),
+                    Wrap(
+                      // ROW 1
+                      spacing: 20,
+                      children: <Widget>[
+                        GetWeight(uid),
+                        GetHeight(uid),
+                      ],
+                    ),
+                    const SizedBox(height: 15),
+                    Wrap(
+                      children: [
+                        GetBMI(uid),
+                      ],
+                    )
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),

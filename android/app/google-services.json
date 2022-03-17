@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1004956516450",
+    "project_id": "fitnesso-69",
+    "storage_bucket": "fitnesso-69.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1004956516450:android:afb5087fd386d9ffa9d13b",
+        "android_client_info": {
+          "package_name": "com.asaman.fitnesso"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1004956516450-ucgiqb6diq01oa95a3sh1b053utum55c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBr9mGndsjFspq_EH0CKOTjVZU1OhVKvR4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1004956516450-ucgiqb6diq01oa95a3sh1b053utum55c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
