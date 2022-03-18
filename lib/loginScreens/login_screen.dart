@@ -14,6 +14,17 @@ class _LoginScreenState extends State<LoginScreen> {
   late String email;
   late String password;
 
+  var _isLoading = false;
+
+  void _onSubmit() {
+    setState(() => _isLoading = true);
+    Future.delayed(
+      const Duration(seconds: 2),
+          () => setState(() => _isLoading = false),
+    );
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

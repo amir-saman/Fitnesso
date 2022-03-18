@@ -43,7 +43,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     Future<void> addPersonalInfo() {
       return personal_info.doc(_auth.currentUser?.uid).set({
         'email' : email,
-        'first_name' : name,
+        'name' : name,
         'weight' : weight,
         'height' : height,
         'bmi' : bmiCalc(weight, height)
@@ -217,6 +217,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                                 filled: true,
                                 fillColor: Colors.white30,
                                 hintText: 'Weight (kg)',
+                                suffixText: "kg",
                                 contentPadding: EdgeInsets.symmetric(
                                     vertical: 10.0, horizontal: 20.0),
                                 border: OutlineInputBorder(
@@ -260,6 +261,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                                 filled: true,
                                 fillColor: Colors.white30,
                                 hintText: 'Height (cm)',
+                                suffixText: "cm",
                                 contentPadding: EdgeInsets.symmetric(
                                     vertical: 10.0, horizontal: 20.0),
                                 border: OutlineInputBorder(

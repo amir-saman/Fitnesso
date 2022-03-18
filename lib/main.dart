@@ -1,18 +1,19 @@
 import 'dart:ui';
 
 import 'package:firebase_core/firebase_core.dart';
-import 'package:fitnesso/loginScreens/login_screen.dart';
-import 'package:fitnesso/loginScreens/registration_screen.dart';
-import 'package:fitnesso/loginScreens/welcome_screen.dart';
+//import 'package:fitnesso/loginScreens/login_screen.dart';
+//import 'package:fitnesso/loginScreens/registration_screen.dart';
+//import 'package:fitnesso/loginScreens/welcome_screen.dart';
 import 'package:flutter/material.dart';
 
+import 'healthPage.dart';
 import 'homepage.dart';
 import 'logBookPage.dart';
 import 'loginScreens/login_screen.dart';
 import 'loginScreens/registration_screen.dart';
 import 'loginScreens/welcome_screen.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(
@@ -50,15 +51,6 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> _pages = <Widget>[
-      HomePage(),
-      const Icon(
-        Icons.camera,
-        size: 150,
-      ),
-      LogBookPage(),
-    ];
-
     return MaterialApp(
       title: 'Fitnesso App',
       theme: ThemeData(
@@ -78,7 +70,7 @@ class _MyAppState extends State<MyApp> {
 }
 
 class Fitnesso extends StatefulWidget {
-   static const String id = "homepage";
+  static const String id = "homepage";
 
   @override
   _FitnessoState createState() => _FitnessoState();
@@ -96,10 +88,7 @@ class _FitnessoState extends State<Fitnesso> {
   Widget build(BuildContext context) {
     List<Widget> _pages = <Widget>[
       HomePage(),
-      const Icon(
-        Icons.camera,
-        size: 150,
-      ),
+      HealthPage(),
       LogBookPage(),
     ];
 

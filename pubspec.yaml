@@ -71,6 +71,8 @@ flutter:
     - assets/images/welcome_screen.jpg
     - assets/images/registration_screen.jpg
     - assets/images/login_screen.jpg
+    - assets/images/logbook_screen.webp
+    - assets/images/health_screen.jpg
 
   # To add assets to your application, add an assets section, like this:
   # assets:

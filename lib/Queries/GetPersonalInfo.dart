@@ -27,7 +27,7 @@ class GetName extends StatelessWidget {
         if (snapshot.connectionState == ConnectionState.done) {
           Map<String, dynamic> data = snapshot.data!.data() as Map<String, dynamic>;
           return Text(
-            "${data['first_name']}",
+            "${data['name']}",
             style: TextStyle(
               fontSize: 60,
               fontFamily: 'Yellowtail',
@@ -50,6 +50,7 @@ class GetWeight extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     CollectionReference personal_info = FirebaseFirestore.instance.collection('personal_info');
 
     return FutureBuilder<DocumentSnapshot>(
