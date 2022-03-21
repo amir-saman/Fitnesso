@@ -73,6 +73,7 @@ flutter:
     - assets/images/login_screen.jpg
     - assets/images/logbook_screen.webp
     - assets/images/health_screen.jpg
+    - assets/images/plateCalc_screen.webp
 
   # To add assets to your application, add an assets section, like this:
   # assets:

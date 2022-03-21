@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fitnesso/AddWorkout.dart';
+import 'package:fitnesso/PlatePage.dart';
 import 'package:fitnesso/Queries/GetWorkouts.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -14,8 +15,22 @@ class LogBookPage extends StatelessWidget {
     final uid = user?.uid;
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: const Text("Log Book"),
+        actions: <Widget>[
+          IconButton(
+            icon: const Icon(
+              Icons.iso,
+              color: Colors.white,
+            ),
+            tooltip: "Plate Calculator",
+            onPressed: () {
+              Navigator.pushNamed(context, PlateCalcPage.id);
+            },
+          ),
+        ],
       ),
+
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.push(

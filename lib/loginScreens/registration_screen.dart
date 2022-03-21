@@ -306,7 +306,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                             await _auth.createUserWithEmailAndPassword(
                                 email: email, password: password);
                             if (newUser != null) {
-                              addPersonalInfo();
+                              await addPersonalInfo();
 
                               Navigator.pushNamed(context, Fitnesso.id);
                             }

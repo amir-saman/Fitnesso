@@ -6,6 +6,7 @@ import 'package:firebase_core/firebase_core.dart';
 //import 'package:fitnesso/loginScreens/welcome_screen.dart';
 import 'package:flutter/material.dart';
 
+import 'PlatePage.dart';
 import 'healthPage.dart';
 import 'homepage.dart';
 import 'logBookPage.dart';
@@ -19,6 +20,7 @@ void main() async {
   runApp(
     MaterialApp(
       home: MyApp(),
+      debugShowCheckedModeBanner: false,
     ),
   );
 }
@@ -52,6 +54,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Fitnesso App',
       theme: ThemeData(
         primarySwatch: MaterialColor(0xFFd6585d, color),
@@ -64,6 +67,7 @@ class _MyAppState extends State<MyApp> {
         WelcomeScreen.id: (context) => WelcomeScreen(),
         RegistrationScreen.id: (context) => RegistrationScreen(),
         LoginScreen.id: (context) => LoginScreen(),
+        PlateCalcPage.id: (context) => PlateCalcPage(),
       },
     );
   }
@@ -95,7 +99,7 @@ class _FitnessoState extends State<Fitnesso> {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor:
-            Colors.blueAccent, // maybe change colour to back or smt
+            Colors.blueAccent,
 
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
@@ -104,10 +108,10 @@ class _FitnessoState extends State<Fitnesso> {
           ),
           BottomNavigationBarItem(
               icon: Icon(Icons.monitor_weight),
-              label: 'Health'), //add a tabBar for BMI on Health Section
+              label: 'Health'),
           BottomNavigationBarItem(
               icon: Icon(Icons.fitness_center),
-              label: 'Log Book'), //icon needs to be changed
+              label: 'Log Book'),
         ],
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,

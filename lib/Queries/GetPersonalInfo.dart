@@ -15,15 +15,12 @@ class GetName extends StatelessWidget {
       future: personal_info.doc(documentId).get(),
       builder:
           (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
-
         if (snapshot.hasError) {
           return Text("Something went wrong");
         }
-
         if (snapshot.hasData && !snapshot.data!.exists) {
           return Text("Document does not exist");
         }
-
         if (snapshot.connectionState == ConnectionState.done) {
           Map<String, dynamic> data = snapshot.data!.data() as Map<String, dynamic>;
           return Text(
@@ -34,9 +31,7 @@ class GetName extends StatelessWidget {
               letterSpacing: 3,
             ),
           );
-
         }
-
         return Text("loading");
       },
     );

@@ -44,18 +44,9 @@ class _HomePageState extends State<HomePage> {
 
     return Scaffold(
       appBar: AppBar(
+          automaticallyImplyLeading: false,
         title: Text("Fitnesso"),
         actions: <Widget>[
-          IconButton(
-            tooltip: "Info",
-            icon: const Icon(
-              Icons.info,
-              color: Colors.white,
-            ),
-            onPressed: () {
-              //TODO
-            },
-          ),
           IconButton(
             icon: const Icon(
               Icons.logout,

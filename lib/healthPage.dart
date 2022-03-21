@@ -7,17 +7,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class HealthPage extends StatefulWidget {
-
   @override
   _HealthPageState createState() => _HealthPageState();
-
 }
 
 class _HealthPageState extends State<HealthPage> {
   static const String id = "log_book_page";
   final _auth = FirebaseAuth.instance;
-
-
 
   late double weight;
   late double height;
@@ -34,8 +30,6 @@ class _HealthPageState extends State<HealthPage> {
 
   @override
   Widget build(BuildContext context) {
-
-
     CollectionReference personal_info =
         FirebaseFirestore.instance.collection('personal_info');
 
@@ -44,6 +38,7 @@ class _HealthPageState extends State<HealthPage> {
 
     return Scaffold(
       appBar: AppBar(
+          automaticallyImplyLeading: false,
         title: const Text("Health"),
       ),
       body: Container(
@@ -79,6 +74,7 @@ class _HealthPageState extends State<HealthPage> {
                       height: 40,
                     ),
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
                           "New Weight:",
@@ -108,16 +104,13 @@ class _HealthPageState extends State<HealthPage> {
                                 filled: true),
                           ),
                         ),
-                        SizedBox(
-                          width: 20,
-                        ),
-
                       ],
                     ),
                     SizedBox(
                       height: 100,
                     ),
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
                           "New Height:",
@@ -147,10 +140,6 @@ class _HealthPageState extends State<HealthPage> {
                                 filled: true),
                           ),
                         ),
-                        SizedBox(
-                          width: 20,
-                        ),
-
                       ],
                     ),
                     SizedBox(
@@ -171,7 +160,8 @@ class _HealthPageState extends State<HealthPage> {
                               elevation: 2.0,
                               child: MaterialButton(
                                 onPressed: () async {
-                                  final isValid = formkey.currentState!.validate();
+                                  final isValid =
+                                      formkey.currentState!.validate();
                                   if (isValid) {
                                     try {
                                       personal_info
